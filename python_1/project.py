@@ -41,8 +41,8 @@ def player_move(board, player_symbol):
     valid_move = False
     while not valid_move:
         try:
-            col = int(input(f"Player {player_symbol}, enter column (0-2): "))
-            row = int(input(f"Player {player_symbol}, enter row (0-2): "))
+            col = int(input(f"Player {player_symbol}, enter row (0-2): "))
+            row = int(input(f"Player {player_symbol}, enter column (0-2): "))
             if 0 <= row <= 2 and 0 <= col <= 2 and board[row][col] == '.':
                 board[row][col] = player_symbol
                 valid_move = True
@@ -84,9 +84,3 @@ while game_active:
         # Decision-making structure to switch players
         current_player = "O" if current_player == "X" else "X"
         turn_count += 1
-
-def main():
-    """Main loop that restarts the game automatically."""
-    while True:
-        play_game()
-        print("\nRestarting game automatically...\n")
