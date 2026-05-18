@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlslmagsuk3xq"]
+
+[ext_resource type="Script" uid="uid://bhqlgaeisqull" path="res://scripts/player.gd" id="1_3j5lm"]
+[ext_resource type="Texture2D" uid="uid://chj6cbpocfckj" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_hqvp4"]
+[ext_resource type="AudioStream" uid="uid://bjumyhn02v0cc" path="res://assets/brackeys_platformer_assets/sounds/freesound_community-jump-sound-14839.mp3" id="3_efpdg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j5lm"]
+atlas = ExtResource("1_hqvp4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efpdg"]
+atlas = ExtResource("1_hqvp4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4p4d"]
+atlas = ExtResource("1_hqvp4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7khn4"]
+atlas = ExtResource("1_hqvp4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xwe5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j5lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efpdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4p4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7khn4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0v3o"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+script = ExtResource("1_3j5lm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -12)
+sprite_frames = SubResource("SpriteFrames_7xwe5")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.5878767
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -7)
+shape = SubResource("CircleShape2D_n0v3o")
+
+[node name="sfx_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_efpdg")
+volume_db = -1.864
